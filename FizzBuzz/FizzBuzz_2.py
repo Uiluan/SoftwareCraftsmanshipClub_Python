@@ -1,16 +1,21 @@
 import sys
+import string
 from FizzBuzzClass_2 import *
-
-def GetRange(argv): #TODO: Change to prompt for input instead
-    if len(sys.argv) != 3:
-        return 1, 100
-    else:
-        return int(sys.argv[1]), int(sys.argv[2])
-
 
 fizzBuzzCheck = FizzBuzz()
 
-first, last = GetRange(sys.argv)
+allowedInput = set(string.digits + " ")
+validInputEntered = False
 
-for num in range(first,last+1):
-    fizzBuzzCheck.PrintFizzBuzz(num, fizzBuzzCheck.CheckFizz(num), fizzBuzzCheck.CheckBuzz(num))
+while (not validInputEntered):
+    userRange = input("Enter range (two values, separated by a space): ")
+    if set(userRange) <= allowedInput:
+        userRange = userRange.split()
+        userRange = [int(num) for num in userRange]
+        if len(userRange) == 2:
+            for num in range(userRange[0], userRange[1]+1):
+                fizzBuzzCheck.PrintFizzBuzz(num, fizzBuzzCheck.CheckFizz(num), fizzBuzzCheck.CheckBuzz(num))
+            validInputEntered = True
+
+    if not validInputEntered:
+        print("Invalid input. Please enter two values, separate by a space (e.g. 1 100)")

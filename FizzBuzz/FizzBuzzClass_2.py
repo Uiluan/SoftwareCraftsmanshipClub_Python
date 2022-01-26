@@ -7,13 +7,13 @@ class FizzBuzz():
         pass
 
     def CheckFizz(self, value):
-        if value % FIZZVALUE == 0 and str(FIZZVALUE) in str(value):
+        if value % FIZZVALUE == 0 or str(FIZZVALUE) in str(value):
             return True
         else:
             return False
 
     def CheckBuzz(self, value):
-        if value % BUZZVALUE == 0 and str(BUZZVALUE) in str(value):
+        if value % BUZZVALUE == 0 or str(BUZZVALUE) in str(value):
             return True
         else:
             return False
