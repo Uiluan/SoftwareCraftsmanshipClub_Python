@@ -17,7 +17,7 @@ class Rover():
         self.__SetDirection(randomizer.randint(NORTH, WEST))
 
     def Execute(self, commands):
-        allowedCommands = set('MRL')
+        allowedCommands = set('MRL') #TODO: Make check for valid commands separate function
         commands = commands.upper()
         if set(commands) <= allowedCommands:
             commandList = list(commands)
