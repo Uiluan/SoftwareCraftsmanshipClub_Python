@@ -17,9 +17,7 @@ class Rover():
         self.__SetDirection(randomizer.randint(NORTH, WEST))
 
     def Execute(self, commands):
-        allowedCommands = set('MRL') #TODO: Make check for valid commands separate function
-        commands = commands.upper()
-        if set(commands) <= allowedCommands:
+        if self.__IsValidCommand(commands):
             commandList = list(commands)
             for currentCommand in commandList:
                 self.__ExecuteCommand(currentCommand)
@@ -28,7 +26,7 @@ class Rover():
             return False
 
     def GetPositionAndDirection(self):
-        return self.__GetPositionX(), self.__GetPositionY(), self.__GetDirectionAsString()
+        return self.__GetPositionX(), self.__GetPositionY(), self.__GetDirectionText()
 
 # Private helpers
     def __GetPositionX(self):
@@ -46,7 +44,7 @@ class Rover():
     def __GetDirection(self):
         return self.direction
 
-    def __GetDirectionAsString(self): #TODO: Remove String "encoding"
+    def __GetDirectionText(self):
         return {
             NORTH: "N",
             EAST : "E",
@@ -109,6 +107,7 @@ class Rover():
             self.__SetPosition(MAXPOSITIONX, self.__GetPositionY())
 
     def __ExecuteCommand(self, command):
+        command = command.upper()
         if self.__VerifyCommand(command):
             if command == 'L':
                 self.__TurnLeft()
@@ -116,6 +115,14 @@ class Rover():
                 self.__TurnRight()
             elif command == 'M':
                 self.__Move()
+            return True
+        else:
+            return False
+
+    def __IsValidCommand(self, command):
+        allowedCommands = set('MRL')
+        commands = command.upper()
+        if set(commands) <= allowedCommands:
             return True
         else:
             return False
