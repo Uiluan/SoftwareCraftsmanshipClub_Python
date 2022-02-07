@@ -18,6 +18,7 @@ class FizzBuzz():
         else:
             return False
 
+#TODO: Can I refactor this to not require boolean input? Perhaps FizzBuzz status stored locally, new object created each loop?
     def PrintFizzBuzz(self, value, isFizz, isBuzz):
         result = ""
         if isFizz:

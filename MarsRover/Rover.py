@@ -21,7 +21,7 @@ class Rover():
             commandList = list(commands)
             for currentCommand in commandList:
                 self.__ExecuteCommand(currentCommand)
-            return True
+            return True #TODO: Investigate change to exception
         else:
             return False
 
@@ -60,7 +60,7 @@ class Rover():
         else:
             self.direction = dir
 
-    def __VerifyCommand(self, command):
+    def __VerifyCommand(self, command): #TODO: I have a VerifyCommand and an IsValidCommand, investigate if duplication
         if command == "M" or command == "L" or command == "R":
             return True
         else:
@@ -115,7 +115,7 @@ class Rover():
                 self.__TurnRight()
             elif command == 'M':
                 self.__Move()
-            return True
+            return True #TODO: Investigate change to exception
         else:
             return False
 
