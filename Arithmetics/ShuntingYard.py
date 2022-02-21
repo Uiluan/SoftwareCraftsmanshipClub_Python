@@ -30,37 +30,37 @@ class ShuntingYard():
     
     #TODO: Revisit splitting this into functions. Everything I've tried so far has been terrible.
     def doShuntingYard(self, tokenMap):
-        rpnResult, rpnStack = [], []
+        rpnResult, operatorStack = [], []
         for token, value in tokenMap:
             if token is NUM:
                 rpnResult.append(value)
             elif token in self.ops:
                 currentToken, (currentPrecedence, currentAssociativeness) = token, value
-                while rpnStack:
-                    previousToken, (previousPrecendence, previousAssociativeness) = rpnStack[-1]
-                    if (currentAssociativeness == LEFT and currentPrecedence <= previousPrecendence) or (currentAssociativeness == RIGHT and currentPrecedence < previousPrecendence):
+                while operatorStack:
+                    previousOperator, (previousOperatorPrecendence, previousOperatorAssociativeness) = operatorStack[-1]
+                    if (currentAssociativeness == LEFT and currentPrecedence <= previousOperatorPrecendence) or (currentAssociativeness == RIGHT and currentPrecedence < previousOperatorPrecendence):
                         if currentToken != RIGHTPARENTHESES:
-                            if previousToken != LEFTPARENTHESES:
-                                rpnStack.pop()
-                                rpnResult.append(previousToken)
+                            if previousOperator != LEFTPARENTHESES:
+                                operatorStack.pop()
+                                rpnResult.append(previousOperator)
                             else:    
                                 break
                         else:        
-                            if previousToken != LEFTPARENTHESES:
-                                rpnStack.pop()
-                                rpnResult.append(previousToken)
+                            if previousOperator != LEFTPARENTHESES:
+                                operatorStack.pop()
+                                rpnResult.append(previousOperator)
                             else:    
-                                rpnStack.pop()
+                                operatorStack.pop()
                                 break
                     else:
                         break
                 if currentToken != RIGHTPARENTHESES:
-                    rpnStack.append((token, value))
+                    operatorStack.append((token, value))
 
-        while rpnStack:
-            previousToken, (previousPrecendence, previousAssociativeness) = rpnStack[-1]
-            rpnStack.pop()
-            rpnResult.append(previousToken)
+        while operatorStack:
+            previousOperator, (previousOperatorPrecendence, previousOperatorAssociativeness) = operatorStack[-1]
+            operatorStack.pop()
+            rpnResult.append(previousOperator)
         return rpnResult
 
 
