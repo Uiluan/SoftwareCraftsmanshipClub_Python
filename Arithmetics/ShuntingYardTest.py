@@ -1,5 +1,5 @@
 
-from Shunt import *
+from ShuntingYard import *
 
 shunt = ShuntingYard()
 
