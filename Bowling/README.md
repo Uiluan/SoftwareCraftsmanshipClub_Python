@@ -1,4 +1,5 @@
 # [Bowling](https://codingdojo.org/kata/Bowling/)
+Written alongside chapter 6 of Clean Code: Objects and Data Structures
 
 ## Problem 
 
@@ -33,3 +34,6 @@ More info on the rules at: [How to Score for Bowling](!https://www.topendsports.
 ### Clues
 What makes this game interesting to score is the lookahead in the scoring for strike and spare. At the time we throw a 
 strike or spare, we cannot calculate the frame score: we have to wait one or two frames to find out what the bonus is.
+
+## Result
+![Test Output](Resources/TestOutput.png)
