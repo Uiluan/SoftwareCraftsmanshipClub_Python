@@ -25,14 +25,6 @@ class AccountManager():
         except (UsernameError, PasswordError) as error:
             print(error)
 
-
-class __User():
-    def __init__(self, username, password) -> None:
-        self.user = {
-            'username': username,
-            'password': password
-        }
-
 class _Username():
     MIN_USERNAME_LENGTH = 3
     MAX_USERNAME_LENGTH = 31
@@ -96,8 +88,6 @@ class _Password():
     def checkIfContainsUsername(self, username: string):
         if str(username).lower() in self.password.lower():
             raise PasswordContainsUsernameError("Password must not contain username")
-
-        return True
 
     def checkIfTooShort(self):
         if len(self.password) < self.MIN_PASSWORD_LENGTH:
