@@ -29,6 +29,6 @@ def test_NotFizzOrBuzz():
     checker = FizzBuzzChecker()
 
     for value in range(1, 101):
-        if (not value % 5 == 0) or (not value % 3 == 0):
+        if (not value % 5 == 0) and (not value % 3 == 0):
             result = checker.GetFizzBuzzResult(value)
             assert result == str(value), f"Expected {value}, got: {result}"
