@@ -1,4 +1,4 @@
-from FizzBuzzChecker import *
+from FizzBuzz.FizzBuzzChecker import *
 
 
 def test_Fizz():
