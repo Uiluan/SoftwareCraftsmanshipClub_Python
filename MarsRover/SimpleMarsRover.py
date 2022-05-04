@@ -1,5 +1,5 @@
 import sys
-from Rover import *
+from rover.Rover import *
 
 rover = Rover()
 print("Landed at: " + str(rover.GetPositionAndDirection()))
