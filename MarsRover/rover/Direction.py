@@ -32,5 +32,9 @@ class Direction():
         else:
             self.direction = self.direction + 1
 
+    def GetDirection(self):
+        return self.direction
+        
+
     def __isValidDirection(self, direction):
         return (direction <= const.consts.WEST and direction >= const.consts.NORTH)
