@@ -96,16 +96,43 @@ def test_Move_Given_55N_EndsAt_56N():
     actual = location.GetLocation()
     assert actual == expected, f"Expected {expected}, got: {actual}"
 
-def test_Move_Given_55W_EndsAt_56W():
-    location = Location(5, 5, const.consts.WEST)
+def test_Move_Given_59N_EndsAt_50N():
+    location = Location(5, 9, const.consts.NORTH)
 
     location.Move()
 
-    expected = [4, 5, const.consts.WEST]
+    expected = [5, 0, const.consts.NORTH]
     actual = location.GetLocation()
     assert actual == expected, f"Expected {expected}, got: {actual}"
 
-def test_Move_Given_55S_EndsAt_56S():
+def test_Move_Given_00W_EndsAt_90W():
+    location = Location(0, 0, const.consts.WEST)
+
+    location.Move()
+
+    expected = [9, 0, const.consts.WEST]
+    actual = location.GetLocation()
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_Move_Given_50W_EndsAt_40W():
+    location = Location(5, 0, const.consts.WEST)
+
+    location.Move()
+
+    expected = [4, 0, const.consts.WEST]
+    actual = location.GetLocation()
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_Move_Given_00S_EndsAt_09S():
+    location = Location(0, 0, const.consts.SOUTH)
+
+    location.Move()
+
+    expected = [0, 9, const.consts.SOUTH]
+    actual = location.GetLocation()
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_Move_Given_55S_EndsAt_54S():
     location = Location(5, 5, const.consts.SOUTH)
 
     location.Move()
@@ -120,5 +147,14 @@ def test_Move_Given_55E_EndsAt_56E():
     location.Move()
 
     expected = [6, 5, const.consts.EAST]
+    actual = location.GetLocation()
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_Move_Given_95E_EndsAt_05E():
+    location = Location(9, 5, const.consts.EAST)
+
+    location.Move()
+
+    expected = [0, 5, const.consts.EAST]
     actual = location.GetLocation()
     assert actual == expected, f"Expected {expected}, got: {actual}"

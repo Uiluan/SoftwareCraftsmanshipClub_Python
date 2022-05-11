@@ -3,6 +3,7 @@ from rover.Coordinate import Coordinate
 import rover.Constants as const
 
 class Location():
+    #TODO Make paramters optional? Default to 0:0:N
     def __init__(self, x:int, y:int, direction:int) -> None:
         self.direction = Direction(direction)
         self.coordinate = Coordinate(x, y)
