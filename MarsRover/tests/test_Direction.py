@@ -134,3 +134,31 @@ def test_GetDirection_GivenWestReturnsWest():
 
     expected = const.consts.WEST
     assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_IsNorth():
+    dir = Direction(const.consts.NORTH)
+
+    actual = dir.IsNorth()
+    expected = True
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_IsEast():
+    dir = Direction(const.consts.EAST)
+
+    actual = dir.IsEast()
+    expected = True
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_IsSouth():
+    dir = Direction(const.consts.SOUTH)
+
+    actual = dir.IsSouth()
+    expected = True
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_IsWest():
+    dir = Direction(const.consts.WEST)
+
+    actual = dir.IsWest()
+    expected = True
+    assert actual == expected, f"Expected {expected}, got: {actual}"

@@ -10,31 +10,41 @@ class Direction():
         pass
 
     def GetString(self):
-        match self.direction:
-            case const.consts.NORTH:
-                return "N"
-            case const.consts.EAST:
-                return "E"
-            case const.consts.SOUTH:
-                return "S"
-            case const.consts.WEST:
-                return "W"
+        if self.IsNorth():
+            return "N"
+        if self.IsEast():
+            return "E"
+        if self.IsSouth():
+            return "S"
+        if self.IsWest():
+            return "W"
 
     def TurnLeft(self):
-        if self.direction == const.consts.NORTH:
+        if self.IsNorth():
             self.direction = const.consts.WEST
         else:
             self.direction = self.direction - 1
     
     def TurnRight(self):
-        if self.direction == const.consts.WEST:
+        if self.IsWest():
             self.direction = const.consts.NORTH
         else:
             self.direction = self.direction + 1
 
     def GetDirection(self):
         return self.direction
-        
+
+    def IsNorth(self):
+        return self.direction == const.consts.NORTH
+
+    def IsSouth(self):
+        return self.direction == const.consts.SOUTH
+
+    def IsWest(self):
+        return self.direction == const.consts.WEST
+
+    def IsEast(self):
+        return self.direction == const.consts.EAST
 
     def __isValidDirection(self, direction):
         return (direction <= const.consts.WEST and direction >= const.consts.NORTH)
