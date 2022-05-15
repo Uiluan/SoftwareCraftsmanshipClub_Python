@@ -16,3 +16,6 @@ class Mover():
             self.location.Move()
         
         return self.location.GetLocation()
+
+    def GetLocationString(self):
+        return self.location.GetString()

@@ -1,3 +1,4 @@
+from http.client import MOVED_PERMANENTLY
 import rover.Constants as const
 from rover.Mover import *
 
@@ -143,4 +144,20 @@ def test_Move_StartAt_00N_Given_m_EndsAt_01N():
     actual = mover.Move("m")
 
     expected = [0, 1, const.consts.NORTH]
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_GetLocationString_Given_55N():
+    mover = Mover(5, 5, const.consts.NORTH)
+
+    actual = mover.GetLocationString()
+
+    expected = "5:5:N"
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_GetLocationString_Given_27S():
+    mover = Mover(2, 7, const.consts.SOUTH)
+
+    actual = mover.GetLocationString()
+
+    expected = "2:7:S"
     assert actual == expected, f"Expected {expected}, got: {actual}"
