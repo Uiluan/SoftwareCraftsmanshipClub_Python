@@ -1,4 +1,7 @@
 # [Mars Rover](https://katalyst.codurance.com/simple-mars-rover)
-Developed with chapter 2 of Clean Code in consideration, regarding naming. I also explored principles of small functions that do one thing, which is discussed later in the book.
+Redeveloped after Chapter 9, using test driven design. No app has been created, only the rover functionality
+implemented as classes and unit tested.
 
-![Simple Mars Rover](resources/SimpleMarsRover.gif)
+## Result
+Running "python3 -m pytest" in my environment produces the following:
+![PytestResults](resources/PytestResults.png)
