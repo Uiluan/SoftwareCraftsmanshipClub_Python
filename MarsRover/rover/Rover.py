@@ -1,9 +1,8 @@
-from re import L
 import string
+import rover.Constants as const
 from rover.Mover import Mover
 from rover.MoverException import *
 from rover.RoverException import *
-import rover.Constants as const
 
 
 class Rover():
