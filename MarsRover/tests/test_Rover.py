@@ -119,3 +119,11 @@ def test_RoverConstructor_GivenYCoordinateLargerThanMax_ThrowsInvalidYCoordinate
 def test_RoverConstructor_GivenDirectionOutOfBounds_ThrowsInvalidDirectionError():
     with pytest.raises(InvalidDirectionError) as exception:
         rover = Rover(0, 0, 5)
+
+def test_GetLocationString_GivenLocation_47E():
+    rover = Rover(4, 7, const.consts.EAST)
+
+    actual = rover.GetLocationString()
+
+    expected = "4:7:E"
+    assert actual == expected, f"Expected {expected}, got: {actual}"

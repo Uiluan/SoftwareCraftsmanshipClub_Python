@@ -27,6 +27,9 @@ class Rover():
     def GetLocation(self):
         return self.mover.GetLocation()
 
+    def GetLocationString(self):
+        return self.mover.GetLocationString()
+
     def __IsValidX(self, x):
         if x <= const.consts.MAX_X and x >= const.consts.MIN_X:
             return True
