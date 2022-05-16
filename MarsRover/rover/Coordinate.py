@@ -2,6 +2,7 @@ GRID_MAX = 9
 GRID_MIN = 0
 
 class Coordinate():
+    #TODO: Add exception for invalid coordinates
     def __init__(self, x:int, y:int) -> None:
         self.x = x
         self.y = y

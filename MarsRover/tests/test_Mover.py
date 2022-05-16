@@ -1,6 +1,8 @@
 from http.client import MOVED_PERMANENTLY
 import rover.Constants as const
 from rover.Mover import *
+import pytest
+from rover.MoverException import *
 
 def test_Move_StartAt_00N_Given_L_EndsAt_00W():
     mover = Mover(0, 0, const.consts.NORTH)
@@ -161,3 +163,9 @@ def test_GetLocationString_Given_27S():
 
     expected = "2:7:S"
     assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_Move_GivenInvalidCommand_ThrowsInvalidCommandError():
+    with pytest.raises(InvalidCommandError) as exception:
+        mover = Mover(5, 5, const.consts.EAST)
+
+        actual = mover.Move("i")
