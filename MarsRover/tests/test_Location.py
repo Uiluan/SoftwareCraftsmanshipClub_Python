@@ -46,7 +46,7 @@ def test_TurnRight_GivenInitial_00N_EndsAt_00E():
     actual = location.GetLocation()
     assert actual == expected, f"Expected {expected}, got: {actual}"
 
-def test_TurnLeft_GivenInitial_00W_EndsAt_00N():
+def test_TurnRight_GivenInitial_00W_EndsAt_00N():
     location = Location(0, 0, const.consts.WEST)
 
     location.TurnRight()
@@ -55,7 +55,7 @@ def test_TurnLeft_GivenInitial_00W_EndsAt_00N():
     actual = location.GetLocation()
     assert actual == expected, f"Expected {expected}, got: {actual}"
 
-def test_TurnLeft_GivenInitial_00S_EndsAt_00W():
+def test_TurnRight_GivenInitial_00S_EndsAt_00W():
     location = Location(0, 0, const.consts.SOUTH)
 
     location.TurnRight()
@@ -64,7 +64,7 @@ def test_TurnLeft_GivenInitial_00S_EndsAt_00W():
     actual = location.GetLocation()
     assert actual == expected, f"Expected {expected}, got: {actual}"
 
-def test_TurnLeft_GivenInitial_00E_EndsAt_00S():
+def test_TurnRight_GivenInitial_00E_EndsAt_00S():
     location = Location(0, 0, const.consts.EAST)
 
     location.TurnRight()
