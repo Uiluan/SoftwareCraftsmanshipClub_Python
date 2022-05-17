@@ -4,7 +4,6 @@ from rover.Mover import Mover
 from rover.MoverException import *
 from rover.RoverException import *
 
-#TODO: refactor to utilize dependancy injection, and learn to mock classes in pytest
 class Rover():
     def __init__(self, x:int=0, y:int=0, direction:int=const.consts.NORTH) -> None:
         if not self.__IsValidX(x):

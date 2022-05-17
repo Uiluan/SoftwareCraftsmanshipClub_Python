@@ -9,7 +9,6 @@ class Direction():
             raise InvalidDirectionError()
         pass
 
-    # TODO: Dictionary?
     def GetString(self):
         if self.IsNorth():
             return "N"

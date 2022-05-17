@@ -5,7 +5,6 @@ from rover.MoverException import *
 from rover.DirectionException import *
 from rover.RoverException import *
 
-#TODO: GetString method
 def test_Move_StartAt_55N_Given_M_EndsAt_56N():
     rover = Rover(5, 5, const.consts.NORTH)
 
