@@ -28,7 +28,7 @@ def test_GivenOtherwiseValidPasswordWithNoUpperCaseThenThrowPasswordErrorIndicat
         manager = PasswordManager()
         manager.SetPassword("username", "password%45")
 
-def test_GivenOtherwiseValidPasswordWithNoNuberThenThrowPasswordErrorIndicatingMustHaveNumber():
+def test_GivenOtherwiseValidPasswordWithNoNumberThenThrowPasswordErrorIndicatingMustHaveNumber():
     with pytest.raises(PasswordError, match="Password must contain an digit: 0-9") as exception:
         manager = PasswordManager()
         manager.SetPassword("username", "Password%")
@@ -38,7 +38,7 @@ def test_GivenOtherwiseValidPasswordWithNoSpecialCharacterThenThrowPasswordError
         manager = PasswordManager()
         manager.SetPassword("username", "Password45")
 
-def test_GivenOtherwiseValidPasswordWithInvalidSpecialCharacterThenThrowPasswordErrorIndicatingCorrectSpecialCharacters():
+def test_GivenOtherwiseValidPasswordWithForwardSlashCharacterThenThrowPasswordErrorIndicatingCorrectSpecialCharacters():
     with pytest.raises(PasswordError, match=re.escape("Password contains bad special character. Must use: !@#$%^&*()-_=+")) as exception:
         manager = PasswordManager()
         manager.SetPassword("username", "Password/45")
