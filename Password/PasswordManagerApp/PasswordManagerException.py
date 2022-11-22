@@ -14,11 +14,7 @@ class UsernameNotAlphanumericError(Exception):
 class UsernameStartError(Exception):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
-
-class PasswordError(Exception):
-    def __init__(self, *args: object) -> None:
-        super().__init__(*args)
-
+        
 class PasswordTooShortError(Exception):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)

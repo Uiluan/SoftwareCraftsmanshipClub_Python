@@ -35,7 +35,7 @@ class _Username():
             self.checkIfLengthAboveMax()
             self.checkIfAlphanumeric()
             self.checkIfStartsWithLetter()
-        except (UsernameTooShortError, UsernameTooLongError, UsernameNotAlphanumericError, UsernameStartError) as error:
+        except Exception as error:
             raise error
 
         return True
@@ -75,10 +75,8 @@ class _Password():
             self.checkIfTooLong()
             self.checkIfTooShort()
             self.checkIfContainsUsername(self.username)
-        except (PasswordContainsUsernameError, PasswordTooShortError, PasswordTooLongError, PasswordNoLowerAlphaError, \
-            PasswordNoLowerAlphaError, PasswordNoUpperAlphaError, PasswordNoDigitError, PasswordNoSpecialCharError, \
-            PasswordBadCharactersError) as error:
-            raise PasswordError(error)
+        except Exception as error:
+            raise error
         
         return True
 
