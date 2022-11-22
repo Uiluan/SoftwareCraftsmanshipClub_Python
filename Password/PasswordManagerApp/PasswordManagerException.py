@@ -1,8 +1,4 @@
 #TODO: move more error text here, rely less on AccountManager
-class UsernameError(Exception):
-    def __init__(self, *args: object) -> None:
-        super().__init__(*args)
-
 class UsernameTooShortError(Exception):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)

@@ -19,7 +19,7 @@ class PasswordManager():
         try:
             if name.isValid() and key.isValid():
                 self.users[username] = password
-        except (UsernameError, PasswordError) as error:
+        except Exception as error:
             raise error
 
 class _Username():
@@ -36,7 +36,7 @@ class _Username():
             self.checkIfAlphanumeric()
             self.checkIfStartsWithLetter()
         except (UsernameTooShortError, UsernameTooLongError, UsernameNotAlphanumericError, UsernameStartError) as error:
-            raise UsernameError(error)
+            raise error
 
         return True
 
