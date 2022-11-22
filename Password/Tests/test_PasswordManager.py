@@ -42,3 +42,26 @@ def test_GivenOtherwiseValidPasswordWithForwardSlashCharacterThenThrowPasswordEr
     with pytest.raises(PasswordError, match=re.escape("Password contains bad special character. Must use: !@#$%^&*()-_=+")) as exception:
         manager = PasswordManager()
         manager.SetPassword("username", "Password/45")
+
+def test_GivenOtherwiseValidPasswordLessThan8CharactersThenThrowPasswordErrorIndicatingMustBeAtLeast8Characters():
+    with pytest.raises(PasswordError, match="Password must be at least 8 characters long") as exception:
+        manager = PasswordManager()
+        manager.SetPassword("username", "Pa1^")
+
+def test_GivenOtherwiseValidPasswordGreaterThan255CharactersThenThrowPasswordErrorIndicatingMustBeLessThan255Characters():
+    with pytest.raises(PasswordError, match="Password must be less than 255 characters") as exception:
+        manager = PasswordManager()
+        manager.SetPassword("username", "Password%45Password%45Password%45Password%45Password%45Password%45Password" + \
+            "%45Password%45Password%45Password%45Password%45Password%45Password%45Password%45Password%45Password%45" + \
+            "Password%45Password%45Password%45Password%45Password%45Password%45Password%45Password%45Password%45" + \
+            "Password%45Password%45Password%45Password%45")
+
+def test_GivenOtherwiseValidPasswordWithNoLowerCaseThenThrowPasswordErrorIndicatingMustContainLowerCaseCharacter():
+    with pytest.raises(PasswordError, match="Password must contain a lowercase letter") as exception:
+        manager = PasswordManager()
+        manager.SetPassword("username", "PASSWORD%45")
+
+def test_GivenOtherwiseValidPasswordContainingUsernameThenThrowPasswordErrorIndicatingPasswordMustNotContainUsername():
+    with pytest.raises(PasswordError, match="Password must not contain username") as exception:
+        manager = PasswordManager()
+        manager.SetPassword("username", "UserNAME%45")
