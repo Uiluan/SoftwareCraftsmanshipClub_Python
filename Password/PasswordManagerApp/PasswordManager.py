@@ -1,6 +1,3 @@
-
-from distutils.log import error
-from sre_parse import SPECIAL_CHARS
 import string
 from unicodedata import name
 from PasswordManagerApp.PasswordManagerException import *
