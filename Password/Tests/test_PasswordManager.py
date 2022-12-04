@@ -65,3 +65,18 @@ def test_GivenOtherwiseValidPasswordContainingUsernameThenThrowPasswordContainsU
     with pytest.raises(PasswordContainsUsernameError, match="Password must not contain username") as exception:
         manager = PasswordManager()
         manager.SetPassword("username", "UserNAME%45")
+
+def test_GetUserAfterAValidUserIsAddedReturnsTrue():
+    manager = PasswordManager()
+    manager.SetPassword("username", "Password%45")
+
+    actual = manager.GetUser("username")
+    expected = True
+    assert actual == expected, f"Expected {expected}, got: {actual}"
+
+def test_GetUserNotInDatabaseReturnsFalse():
+    manager = PasswordManager()
+
+    actual = manager.GetUser("username")
+    expected = False
+    assert actual == expected, f"Expected {expected}, got: {actual}"

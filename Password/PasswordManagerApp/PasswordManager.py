@@ -2,11 +2,15 @@ import string
 from unicodedata import name
 from PasswordManagerApp.PasswordManagerException import *
 
+#TODO: SetPassword() creates a user, make it only set password for existing user, and have an AddUser function
 class PasswordManager():
     def __init__(self) -> None:
         self.users = {}
         pass
 
+    # TODO: Doesn't get user, just returns if user exists. Refactor.
+    # Could require other operations on a user to require getting a user object. Then GetUser can exist and can throw exceptions.
+    # Getting a user object should require a password?
     def GetUser(self, username: string):
         if username in self.users:
             return True
