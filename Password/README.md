@@ -1,7 +1,22 @@
 # [Password](https://github.com/joebobfisher/software-craftsmanship-club/tree/main/password)
 Written for chapter 7 of Clean Code: Error Handling.
 
-## Problem
+## Running the code
+The python code is dockerized. If docker is installed and running, use the following command to build the tests.
+```
+docker build --target=tests -t python-password-manager-tests .
+```
+Then to run the docker image.
+```
+docker run python-password-manager-tests
+```
+
+This kata does have a Main.py file that can be run (this is a legacy implementation at the moment). You may run this as you would any python program if you have the tools installed, or the following docker commands.
+```
+docker build --target=app -t python-password-manager-app .
+docker run python-password-manager-app
+```
+## The Kata
 
 Create a program/class/whatever that will store Username/password combinations, as well as tell us whether a Username
 exists.
@@ -74,6 +89,3 @@ or if you're one of those people who need to finish absolutely everything. 🤪
 * You hash the password values in storage so they're not stored in plaintext.
 * You create an interface where the Username and password can be given on the command line, with the password blanked 
   out or shown as `*`s when being typed in.
-
-## Result
-![Test Output](Resources/TestResults.png)
