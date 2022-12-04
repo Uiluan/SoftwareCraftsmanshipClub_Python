@@ -11,7 +11,7 @@ Then to run the docker image.
 docker run python-password-manager-tests
 ```
 
-This kata does have a Main.py file that can be run (this is a legacy implementation at the moment). You may run this as you would any python program if you have the tools installed, or the following docker commands.
+This kata does have a Main.py file that can be run (this is a legacy implementation at the moment. Due to changes in the PasswordManager this will throw an exception). You may run this as you would any python program if you have the tools installed, or the following docker commands.
 ```
 docker build --target=app -t python-password-manager-app .
 docker run python-password-manager-app
