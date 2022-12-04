@@ -8,6 +8,11 @@ def test_GivenUsernameLessThanThreeCharactersThenThrowsUsernameTooShortError():
         manager = PasswordManager()
         manager.SetPassword("us", "Password%45")
 
+def test_GivenEmptyStringUsernameThenThrowsUsernameTooShortError():
+    with pytest.raises(UsernameTooShortError, match="Username must be at least 3 characters") as exception:
+        manager = PasswordManager()
+        manager.SetPassword("", "Password%45")
+
 def test_GivenUsernameGreaterThan31CharactersThenThrowsUsernameTooLongError():
     with pytest.raises(UsernameTooLongError, match="Username must be less than 31 characters") as exception:
         manager = PasswordManager()
@@ -18,10 +23,41 @@ def test_GivenUsernameThatContainsExclamationThenThrowsUsernameNotAlphanumericEr
         manager = PasswordManager()
         manager.SetPassword("username!", "Password%45")
 
+def test_GivenUsernameStartingWithSpaceThenThrowsUsernameNotAlphanumericError():
+    with pytest.raises(UsernameNotAlphanumericError, match=re.escape("Username must be alphanumeric (consisting of letters and numbers)")) as exception:
+        manager = PasswordManager()
+        manager.SetPassword(" username", "Password%45")
+
+def test_GivenUsernameOfOnlySpacesThenThrowsUsernameNotAlphanumericError():
+    with pytest.raises(UsernameNotAlphanumericError, match=re.escape("Username must be alphanumeric (consisting of letters and numbers)")) as exception:
+        manager = PasswordManager()
+        manager.SetPassword("     ", "Password%45")
+
 def test_GivenUsernameStartingWith9ThenThrowUsernameStartError():
     with pytest.raises(UsernameStartError, match="Username must begin with a letter") as exception:
         manager = PasswordManager()
         manager.SetPassword("9username", "Password%45")
+
+def test_GivenNoneAsUsernameDoesNotThrowException():
+    # The PasswordManager should turn any input into a string. 'None' as a string is considered valid input
+    manager = PasswordManager()
+    manager.SetPassword(None, "Password%45")
+
+def test_GivenNoneAsPasswordThrowsPasswordNoSpecialCharError():
+    # PasswordManager should turn any input into a string. 'None' As a string is considered valid other than not following other password rules
+    with pytest.raises(PasswordNoSpecialCharError, match=re.escape("Password must contain one of the following: !@#$%^&*()-_=+")) as exception:
+        manager = PasswordManager()
+        manager.SetPassword("username", None)
+
+def test_GivenEmptyStringAsPasswordThrowsPasswordNoSpecialCharError():
+    with pytest.raises(PasswordNoSpecialCharError, match=re.escape("Password must contain one of the following: !@#$%^&*()-_=+")) as exception:
+        manager = PasswordManager()
+        manager.SetPassword("username", "")
+
+def test_GivenSpacesAsPasswordThrowsPasswordBadCharactersError():
+    with pytest.raises(PasswordBadCharactersError, match=re.escape("Password contains bad special character. Must use: !@#$%^&*()-_=+")) as exception:
+        manager = PasswordManager()
+        manager.SetPassword("username", "    ")
 
 def test_GivenOtherwiseValidPasswordWithNoUpperCaseThenThrowPasswordNoUpperAlphaError():
     with pytest.raises(PasswordNoUpperAlphaError, match="Password must contain an uppercase letter") as exception:
