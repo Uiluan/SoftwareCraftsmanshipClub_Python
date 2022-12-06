@@ -1,5 +1,4 @@
 # [Password](https://github.com/joebobfisher/software-craftsmanship-club/tree/main/password)
-Written for chapter 7 of Clean Code: Error Handling.
 
 ## Running the code
 The python code is dockerized. If docker is installed and running, use the following command to build the tests.
